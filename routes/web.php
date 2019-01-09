@@ -49,6 +49,7 @@ Route::any('/test/abc','Test\TestController@abc');
 
 Route::get('/view/test1','Test\TestController@viewTest1');
 Route::get('/view/test2','Test\TestController@viewTest2');
+Route::get('/check_cookie','Test\TestController@checkCookie')->middleware('check.cookie');//中间价测试
 
 
 //用户注册
@@ -62,6 +63,14 @@ Route::post('/loginadd','User\UserController@loginadd');
 
 //个人中心
 Route::get('/center','User\UserController@center');
+//购物车
+Route::get('/cart','Cart\CartController@index')->middleware('check.login.token');
+Route::get('/cart/add/{goods_id}','Cart\CartController@add')->middleware('check.login.token');  //商品添加
+Route::post('/cart/add2','Cart\IndexController@add2')->middleware('check.login.token');      //添加商品
+Route::get('/cart/del/{goods_id}','Cart\CartController@del')->middleware('check.login.token');  //商品添加
+
+//商品
+Route::get('/goods/{goods_id}','Goods\GoodsController@goods');  //商品详情
 
 
 

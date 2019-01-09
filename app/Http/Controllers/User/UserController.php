@@ -78,10 +78,14 @@ class UserController extends Controller
       // exit;
         if($result){
           if(password_verify($pass,$result->pass)){
-              $token = substr(time().mt_rand(1-9999),10,10);
+              $token = substr(md5(time().mt_rand(1,99999)),10,10);
               setcookie('uid',$result->uid,time()+86400,'/','shop_laravel.com',false,true);
               setcookie('token',$token,time()+86400,'/login','',false,true);
+              $request->session()->put('u_token',$token);
+              $request->session()->put('uid',$result->uid);
               header("Refresh:3;url=/center");
+
+
 
                 echo '登陆成功';
           }else{
@@ -93,7 +97,7 @@ class UserController extends Controller
 
     }
 
-    public function ce00000nter(){
+    public function center(){
         if(empty($_COOKIE['uid'])){
             header('Refresh:2;url=/login');
             echo '请先登录';

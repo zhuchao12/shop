@@ -68,4 +68,8 @@ class TestController extends Controller
         $data= [];
         return view('test.index',$data);
     }
+
+    public function check(){
+         echo __METHOD__;
+}
 }
