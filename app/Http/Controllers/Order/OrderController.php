@@ -47,6 +47,10 @@ class OrderController extends Controller
             echo '生成订单失败';
         }
         echo '下单成功,订单号'.$info .'跳转支付';
+
+
+
+
         //清空购物车
         CartModel::where(['uid'=>session()->get('uid')])->delete();
         header("Refresh:1;url=/order/list");
@@ -60,4 +64,6 @@ class OrderController extends Controller
        ];
         return view('order.order',$data);
     }
+
+
 }
