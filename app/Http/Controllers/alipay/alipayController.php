@@ -5,7 +5,7 @@ use GuzzleHttp\client;
 class alipayController extends Controller
 {
     public function alipay(){
-        $url='http://vm.order.lening.com';
+        $url='http://order.lening.com';
         $client = new Client([
             'base_uri'=>$url,
             'timeout'=>2.0,
