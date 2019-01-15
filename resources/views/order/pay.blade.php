@@ -16,7 +16,7 @@
             </tr>
         <hr>
     </table>
-    <a href="/alipay1/{{$order_id}}" class="btn btn-primary btn-lg" style="width:940px; ">去支付</a><br><br>
+    <a href="/pay/{{$order_id}}" class="btn btn-primary btn-lg" style="width:940px; ">去支付</a><br><br>
 
 @endsection
 
