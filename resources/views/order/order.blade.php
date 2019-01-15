@@ -18,9 +18,9 @@
                 <td class="danger">{{date('Y-m-d H:i:s',$v['add_time'])}}</td>
                 <td class="success">
                     <li class="btn">
-                        @if($v['is_pay']==1)
+                        @if($v['is_pay']==0)
                         <a href="/pay/list/{{$v['order_id']}}">付款</a>
-                            @elseif($v['is_pay']==2)
+                            @elseif($v['is_pay']==1)
                             已付款
                             @endif
                     </li>
