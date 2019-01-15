@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class checkLoginToken
+class CheckLoginToken
 {
     /**
      * Handle an incoming request.

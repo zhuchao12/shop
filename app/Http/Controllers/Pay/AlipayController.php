@@ -52,11 +52,11 @@ class AlipayController extends Controller
      * 订单支付
      * @param $oid
      */
-    public function pay($oeder_id)
+    public function pay($order_id)
     {
 
         //验证订单状态 是否已支付 是否是有效订单
-        $order_info = OrderModel::where(['order_id'=>$oeder_id])->first()->toArray();
+        $order_info = OrderModel::where(['order_id'=>$order_id])->first()->toArray();
 
         //判断订单是否已被支付
         if($order_info['is_pay']==1){
@@ -71,8 +71,8 @@ class AlipayController extends Controller
 
         //业务参数
         $bizcont = [
-            'subject'           => 'Lening-Order: ' .$oeder_id,
-            'out_trade_no'      => $oeder_id,
+            'subject'           => 'Lening-Order: ' .$order_id,
+            'out_trade_no'      => $order_id,
             'total_amount'      => $order_info['order_amount'] / 100,
             'product_code'      => 'QUICK_WAP_WAY',
 
