@@ -220,6 +220,8 @@ class AlipayController extends Controller
         //验签
         $res = $this->verify($_POST);
 
+        var_dump($res);
+
         $log_str = '>>>> ' . date('Y-m-d H:i:s');
         if($res === false){
             //记录日志 验签失败
