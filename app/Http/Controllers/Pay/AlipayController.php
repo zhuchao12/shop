@@ -16,6 +16,8 @@ class AlipayController extends Controller
     public $notify_url;
     public $return_url;
     public $rsaPrivateKeyFilePath = './key/priv.key';
+    public $aliPubKey = './key/ali_pub.key';
+
 
     public function __construct()
     {
@@ -32,31 +34,50 @@ class AlipayController extends Controller
     public function test0()
     {
         //
-        $url = 'http://vm.order.lening.com';
+        $url = 'http://shop07.wjk1106.cn';
         // $client = new Client();
         $client = new Client([
             'base_uri' => $url,
             'timeout'  => 2.0,
         ]);
 
-        $response = $client->request('GET', '/order.php');
+        $response = $client->request('GET', '/index.php');
         echo $response->getBody();
 
 
     }
 
-
-    public function test()
+    /**
+     * 订单支付
+     * @param $oid
+     */
+    public function pay($oid)
     {
 
+        //验证订单状态 是否已支付 是否是有效订单
+        $order_info = OrderModel::where(['oid'=>$oid])->first()->toArray();
+
+        //判断订单是否已被支付
+        if($order_info['is_pay']==1){
+            die("订单已支付，请勿重复支付");
+        }
+        //判断订单是否已被删除
+        if($order_info['is_delete']==1){
+            die("订单已被删除，无法支付");
+        }
+
+
+
+        //业务参数
         $bizcont = [
-            'subject'           => 'ancsd'. mt_rand(1111,9999).str_random(6),
-            'out_trade_no'      => 'oid'.date('YmdHis').mt_rand(1111,2222),
-            'total_amount'      => 0.01,
+            'subject'           => 'Lening-Order: ' .$oid,
+            'out_trade_no'      => $oid,
+            'total_amount'      => $order_info['order_amount'] / 100,
             'product_code'      => 'QUICK_WAP_WAY',
 
         ];
 
+        //公共参数
         $data = [
             'app_id'   => $this->app_id,
             'method'   => 'alipay.trade.wap.pay',
@@ -70,16 +91,21 @@ class AlipayController extends Controller
             'biz_content'   => json_encode($bizcont),
         ];
 
+        //签名
         $sign = $this->rsaSign($data);
         $data['sign'] = $sign;
         $param_str = '?';
         foreach($data as $k=>$v){
             $param_str .= $k.'='.urlencode($v) . '&';
         }
+
         $url = rtrim($param_str,'&');
         $url = $this->gate_way . $url;
         header("Location:".$url);
     }
+
+
+
 
 
     public function rsaSign($params) {
