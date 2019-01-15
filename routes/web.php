@@ -79,10 +79,10 @@ Route::any('/order','Order\OrderController@add')->middleware('check.login.token'
 Route::any('/order/list','Order\OrderController@order')->middleware('check.login.token');  ;  //订单列表
 
 //支付
-Route::any('/pay/{order_id}','Pay\AlipayController@pay')->middleware('check.login.token');
+Route::any('/pay/{order_id}','Pay\PayController@pay')->middleware('check.login.token');
 Route::any('/pay/list/{order_id}','Pay\PayController@pay2')->middleware('check.login.token');
 Route::any('/alipay',' Alipay\alipayController@alipay')->middleware('check.login.token');
 
-Route::any('/alipay1/{order_id}','Pay\AlipayController@pay')->middleware('check.login.token');
+Route::any('/alipay/{order_id}','Pay\AlipayController@pay')->middleware('check.login.token');
 Route::post('/alipay2/notify','Pay\AlipayController@aliNotify');        //支付宝支付 异步通知回调
 Route::get('/alipay2/return','Pay\AlipayController@aliReturn');        //支付宝支付 同步通知回调
