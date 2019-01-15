@@ -25,7 +25,7 @@ class PayController extends Controller
             exit;
         }
         //支付成功 修改支付时间
-        OrderModel::where(['order_id'=>$order_id])->update(['pay_time'=>time(),'pay_amount'=>rand(1111,9999),'is_pay'=>2]);
+        OrderModel::where(['order_id'=>$order_id])->update(['pay_time'=>time(),'pay_amount'=>rand(1111,9999),'is_pay'=>1]);
         header('Refresh:2;url=/order/list');
         echo '支付成功，正在跳转';
     }
