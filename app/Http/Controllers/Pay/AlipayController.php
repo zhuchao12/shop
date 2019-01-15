@@ -50,7 +50,7 @@ class AlipayController extends Controller
 
     /**
      * 订单支付
-     * @param $oid
+     * @param $:
      */
     public function pay($order_id)
     {
@@ -242,7 +242,7 @@ class AlipayController extends Controller
                 'plat'          => 1,      //平台编号 1支付宝 2微信
             ];
 
-            OrderModel::where(['oid'=>$oid])->update($info);
+            OrderModel::where(['order_id'=>$oid])->update($info);
         }
 
         //处理订单逻辑
