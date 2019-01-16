@@ -59,7 +59,7 @@ class AlipayController extends Controller
         $order_info = OrderModel::where(['order_id'=>$order_id])->first()->toArray();
 
         //判断订单是否已被支付
-        if($order_info['is_pay']==1){
+        if($order_info['。']==1){
             die("订单已支付，请勿重复支付");
         }
         //判断订单是否已被删除
@@ -219,8 +219,6 @@ class AlipayController extends Controller
         file_put_contents('logs/alipay.log',$log_str,FILE_APPEND);
         //验签
         $res = $this->verify($_POST);
-
-        var_dump($res);
 
         $log_str = '>>>> ' . date('Y-m-d H:i:s');
         if($res === false){
