@@ -666,8 +666,8 @@ class Connection implements ConnectionInterface
             );
         }
 
-        return $result;
-    }
+return $result;
+}
 
     /**
      * Log a query in the connection's query log.
