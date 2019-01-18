@@ -73,7 +73,7 @@ Route::any('/cart/del2/{goods_id}','Cart\CartController@del2')->middleware('chec
 //商品
 Route::any('/goods/{goods_id}','Goods\GoodsController@goods')->middleware('check.login.token');  ;  //商品详情
 
-Route::any('/goods2/list','Goods\GoodsController@goods2')->middleware('check.login.token');  ;  //商品展示
+Route::any('/goods2/list','Goods\GoodsController@goods2')->middleware('check.login.token');  //商品展示
 //订单
 Route::any('/order','Order\OrderController@add')->middleware('check.login.token');  ;  //订单
 Route::any('/order/list','Order\OrderController@order')->middleware('check.login.token');  ;  //订单列表
@@ -86,3 +86,7 @@ Route::any('/alipay',' Alipay\alipayController@alipay')->middleware('check.login
 Route::any('/alipay/{order_id}','Pay\AlipayController@pay')->middleware('check.login.token');
 Route::post('/alipay2/notify','Pay\AlipayController@aliNotify');        //支付宝支付 异步通知回调
 Route::get('/alipay2/return','Pay\AlipayController@aliReturn');        //支付宝支付 同步通知回调
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

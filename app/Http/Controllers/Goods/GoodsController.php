@@ -10,6 +10,7 @@ use App\Model\GoodsModel;
 class GoodsController extends Controller
 {
 
+
     /**
      * 商品详情
      * @param $goods_id
