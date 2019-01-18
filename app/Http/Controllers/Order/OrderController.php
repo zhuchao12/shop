@@ -7,11 +7,15 @@ use App\Model\GoodsModel;
 use DemeterChain\C;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 use App\Model\OrderModel;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function add(Request $request){
         $where = [
             'uid'=>session()->get('uid'),

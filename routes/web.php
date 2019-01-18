@@ -75,8 +75,8 @@ Route::any('/goods/{goods_id}','Goods\GoodsController@goods')->middleware('check
 
 Route::any('/goods2/list','Goods\GoodsController@goods2')->middleware('check.login.token');  //商品展示
 //订单
-Route::any('/order','Order\OrderController@add')->middleware('check.login.token');  ;  //订单
-Route::any('/order/list','Order\OrderController@order')->middleware('check.login.token');  ;  //订单列表
+Route::any('/order','Order\OrderController@add')  ;  //订单
+Route::any('/order/list','Order\OrderController@order')  ;  //订单列表
 
 //支付
 Route::any('/pay/{order_id}','Pay\PayController@pay')->middleware('check.login.token');
