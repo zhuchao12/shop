@@ -348,6 +348,12 @@ class ComposerStaticInit05406b97357aa300dc902c73a095985f
     );
 
     public static $classMap = array (
+        'App\\Admin\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AuthController.php',
+        'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
+        'App\\Admin\\Controllers\\GoodsController' => __DIR__ . '/../..' . '/app/Admin/Controllers/GoodsController.php',
+        'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
+        'App\\Admin\\Extensions\\Form\\CKEditor' => __DIR__ . '/../..' . '/app/Admin/Extensions/Form/CKEditor.php',
+        'App\\Admin\\Extensions\\WangEditor' => __DIR__ . '/../..' . '/app/Admin/Extensions/WangEditor.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -357,6 +363,7 @@ class ComposerStaticInit05406b97357aa300dc902c73a095985f
         'App\\Http\\Controllers\\Cart\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cart/CartController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Goods\\GoodsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Goods/GoodsController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\Order\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Order/OrderController.php',
         'App\\Http\\Controllers\\Pay\\AlipayController' => __DIR__ . '/../..' . '/app/Http/Controllers/Pay/AlipayController.php',
         'App\\Http\\Controllers\\Pay\\PayController' => __DIR__ . '/../..' . '/app/Http/Controllers/Pay/PayController.php',
