@@ -22,7 +22,7 @@ class MovieController extends Controller
         return view('movie.movie',$data);
     }
 
-    public function buy($pos,$status){
+    public function buy($pos){
         $key = 'test_bit';
         Redis::setbit($key,$pos,1);
         header('Refresh:2;url=/movie');
