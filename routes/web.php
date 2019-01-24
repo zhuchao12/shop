@@ -97,7 +97,7 @@ Route::post('/upload/pdf','Upload\UploadController@uploads');
 
 //在线订座
 Route::any('/movie','Movie\MovieController@movie');
-Route::any('/movie/buy','Movie\MovieController@buy');
+Route::any('/movie/buy/{pos}','Movie\MovieController@buy');
 
 
 
