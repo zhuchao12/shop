@@ -4,9 +4,9 @@
     <h1>Movie</h1>
     @foreach($seat as $k=>$v)
         @if($v==1)
-            <button class="btn-default btn-danger"><a href="/movie/{{$k}}" class="{{$k}}">座位</a></button>
+            <a href="/movie/buy/{{$k}}" class="btn-default btn-danger">座位{{$k+1}}</a>
         @else
-            <button class="btn-default btn-info"><a href="/movie/{{$k}}" class="{{$k}}">座位</a></button>
+            <a href="/movie/buy/{{$k}}" class="btn-default btn-info">座位{{$k+1}}</a>
         @endif
     @endforeach
 
