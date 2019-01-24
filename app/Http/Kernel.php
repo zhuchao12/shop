@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\CheckCookie;
+use App\Http\Middleware\clickLog;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -37,6 +38,9 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'log.click' =>[
+            clickLog::class
+        ],
 
         'api' => [
             'throttle:60,1',
@@ -59,7 +63,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'check.cookie'=>\App\Http\Middleware\CheckCookie::class,
-        'check.login.token'=>\App\Http\Middleware\CheckLoginToken::class,
+     //   'check.login.token'=>\App\Http\Middleware\CheckLoginToken::class,
 
     ];
 }

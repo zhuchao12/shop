@@ -2,13 +2,16 @@
 
 
 @section('header')
+
+
     @parent
     <p style="color: red;">This is Child header.</p>
 @endsection
 
-@section('content')
 
-    <form method="post" action="/loginadd">
+
+@section('content')
+    <form method="post" action="/kloginadd">
         {{csrf_field()}}
         <div class="form-group">
             <label for="exampleInputEmail1"> 用户名：</label>
@@ -26,6 +29,7 @@
 
         <button type="submit" class="btn btn-success form-control">登录</button>
     </form>
+
 @endsection
 
 
@@ -33,4 +37,3 @@
     @parent
     <p style="color: red;">This is Child footer .</p>
 @endsection
-

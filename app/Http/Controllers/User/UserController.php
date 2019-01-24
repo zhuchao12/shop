@@ -67,32 +67,32 @@ class UserController extends Controller
     }
 
     public function loginadd(Request $request ){
-        $reg = request()->all();
-        //var_dump($reg);
-        $pass =  $request->input('pwd');
-        $where = [
-            'name'=>$reg['name'],
-        ];
-        $result = UserModel::where($where)->first();
-       //dump($result);
-      // exit;
-        if($result){
-          if(password_verify($pass,$result->pass)){
-              $token = substr(md5(time().mt_rand(1,99999)),10,10);
-              setcookie('uid',$result->uid,time()+86400,'/','shop07.wjk1106.cn',false,true);
-              setcookie('token',$token,time()+86400,'/login','',false,true);
-              $request->session()->put('u_token',$token);
-              $request->session()->put('uid',$result->uid);
-              header("Refresh:3;url=/center");
-                echo '登陆成功';
-          }else{
-              echo '登录失败';
-          }
+    $reg = request()->all();
+    //var_dump($reg);
+    $pass =  $request->input('pwd');
+    $where = [
+        'name'=>$reg['name'],
+    ];
+    $result = UserModel::where($where)->first();
+    //dump($result);
+    // exit;
+    if($result){
+        if(password_verify($pass,$result->pass)){
+            $token = substr(md5(time().mt_rand(1,99999)),10,10);
+            setcookie('uid',$result->uid,time()+86400,'/','shop07.wjk1106.cn',false,true);
+            setcookie('token',$token,time()+86400,'/login','',false,true);
+            $request->session()->put('u_token',$token);
+            $request->session()->put('uid',$result->uid);
+            header("Refresh:3;url=/center");
+            echo '登陆成功';
         }else{
-            echo '用户名不存在';
+            echo '登录失败';
         }
-
+    }else{
+        echo '用户名不存在';
     }
+
+}
 
     public function center(){
         if(empty($_COOKIE['uid'])){

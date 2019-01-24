@@ -64,29 +64,46 @@ Route::any('/loginadd','User\UserController@loginadd');
 //个人中心
 Route::any('/center','User\UserController@center');
 //购物车
-Route::any('/cart','Cart\CartController@index')->middleware('check.login.token');
-Route::any('/cart/add/{goods_id}','Cart\CartController@add')->middleware('check.login.token');  //商品添加
-Route::any('/cart/add2/','Cart\CartController@add2')->middleware('check.login.token');      //添加商品
-Route::any('/cart/del/{goods_id}','Cart\CartController@del')->middleware('check.login.token');  //删除商品
-Route::any('/cart/del2/{goods_id}','Cart\CartController@del2')->middleware('check.login.token');  //删除商品
+Route::any('/cart','Cart\CartController@index');
+Route::any('/cart/add/{goods_id}','Cart\CartController@add');  //商品添加
+Route::any('/cart/add2/','Cart\CartController@add2');      //添加商品
+Route::any('/cart/del/{goods_id}','Cart\CartController@del');  //删除商品
+Route::any('/cart/del2/{goods_id}','Cart\CartController@del2');  //删除商品
 
 //商品
-Route::any('/goods/{goods_id}','Goods\GoodsController@goods')->middleware('check.login.token');  ;  //商品详情
+Route::any('/goods/{goods_id}','Goods\GoodsController@goods') ;  //商品详情
 
-Route::any('/goods2/list','Goods\GoodsController@goods2')->middleware('check.login.token');  //商品展示
+Route::any('/goods2/list','Goods\GoodsController@goods2');  //商品展示
+
 //订单
 Route::any('/order','Order\OrderController@add')  ;  //订单
 Route::any('/order/list','Order\OrderController@order')  ;  //订单列表
 
 //支付
-Route::any('/pay/{order_id}','Pay\PayController@pay')->middleware('check.login.token');
-Route::any('/pay/list/{order_id}','Pay\PayController@pay2')->middleware('check.login.token');
-Route::any('/alipay',' Alipay\alipayController@alipay')->middleware('check.login.token');
+Route::any('/pay/{order_id}','Pay\PayController@pay');
+Route::any('/pay/list/{order_id}','Pay\PayController@pay2');
+Route::any('/alipay',' Alipay\alipayController@alipay');
 
-Route::any('/alipay/{order_id}','Pay\AlipayController@pay')->middleware('check.login.token');
+Route::any('/alipay/{order_id}','Pay\AlipayController@pay');
 Route::post('/alipay2/notify','Pay\AlipayController@aliNotify');        //支付宝支付 异步通知回调
 Route::get('/alipay2/return','Pay\AlipayController@aliReturn');        //支付宝支付 同步通知回调
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/upload','Upload\UploadController@upload');
+Route::post('/upload/pdf','Upload\UploadController@uploads');
+
+//在线订座
+Route::any('/movie','Movie\MovieController@movie');
+Route::any('/movie/buy','Movie\MovieController@buy');
+
+
+
+
+//考试登录
+Route::any('/klogin','Login\LoginController@klogin');  //考试登录
+Route::any('/kloginadd','Login\LoginController@kloginadd');
+Route::any('/pwd','Login\LoginController@pwd');//修改密码
+Route::any('/pwd2','Login\LoginController@pwd2');//修改密码
