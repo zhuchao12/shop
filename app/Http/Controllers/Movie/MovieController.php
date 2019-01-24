@@ -25,6 +25,8 @@ class MovieController extends Controller
     public function buy($pos,$status){
         $key = 'test_bit';
         Redis::setbit($key,$pos,1);
+        header('Refresh:2;url=/movie');
+        echo '抢座成功';
 
     }
 
