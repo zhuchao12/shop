@@ -112,7 +112,7 @@ Route::any('/pwd2','Login\LoginController@pwd2');
 
 //微信
 Route::get('/wechat/valid','Wechat\WechatController@wechatOne');
-Route::get('/wechat/test','Wechat\WeixinController@test');
-Route::get('/wechat/valid1','Wechat\WeixinController@validToken1');
-Route::post('/wechat/valid1','Wechat\WeixinController@wxEvent');        //接收微信服务器事件推送
-Route::post('/wechat/valid','Wechat\WeixinController@validToken');
+Route::get('/wechat/test','Wechat\WechatController@test');
+Route::get('/wechat/valid1','Wechat\WechatController@validToken1');
+Route::post('/wechat/valid1','Wechat\WechatController@wxEvent');        //接收微信服务器事件推送
+Route::post('/wechat/valid','Wechat\WechatController@validToken');
