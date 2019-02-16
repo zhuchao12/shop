@@ -105,5 +105,14 @@ Route::any('/movie/buy/{pos}','Movie\MovieController@buy');
 //考试登录
 Route::any('/klogin','Login\LoginController@klogin');  //考试登录
 Route::any('/kloginadd','Login\LoginController@kloginadd');
-Route::any('/pwd','Login\LoginController@pwd');//修改密码
-Route::any('/pwd2','Login\LoginController@pwd2');//修改密码
+Route::any('/pwd','Login\LoginController@pwd');
+Route::any('/pwd2','Login\LoginController@pwd2');
+
+
+
+//微信
+Route::get('/wechat/valid','Wechat\WechatController@wechatOne');
+Route::get('/wechat/test','Wechat\WeixinController@test');
+Route::get('/wechat/valid1','Wechat\WeixinController@validToken1');
+Route::post('/wechat/valid1','Wechat\WeixinController@wxEvent');        //接收微信服务器事件推送
+Route::post('/wechat/valid','Wechat\WeixinController@validToken');
