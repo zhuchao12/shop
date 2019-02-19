@@ -174,10 +174,16 @@ class WechatController extends Controller
                     ]
                 ]
             ],
-            "sub_button"=>[
-                    "name"  => "进入百度",
-                    "url"   => "https://www.baidu.com"
+            [
+                "name"=>"进入百度",
+                "sub_button"=>[
+                    [
+                        "type"=>"view",
+                        "name"=>"网易云",
+                        "url"=>"https://baidu.com/"
+                    ],
                 ]
+            ]
         ];
 
 
