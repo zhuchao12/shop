@@ -76,7 +76,7 @@ class WechatController extends Controller
                 $id = WechatUser::insertGetId($user_data);      //保存用户信息
                 var_dump($id);
             }
-        }elseif($event=='CLICK'){               //click 菜单
+        }elseif($event=='MINIPROGRAM'){               //click 菜单
             if($xml->EventKey=='kefu01'){
                 $this->kefu01($openid,$xml->ToUserName);
             }
