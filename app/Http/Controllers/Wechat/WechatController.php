@@ -178,7 +178,7 @@ class WechatController extends Controller
                             "type"=>"miniprogram",
                             "name"=>"微信扫码",
                             "url"=>"http://mp.weixin.qq.com",
-                            "appid"=>"wx94cc1e8ca88dde8a",
+                            "appid"=>"wxe072a1fff4e9a930",
                             "pagepath"=>"pages/lunar/index"
                         ]
                     ]
