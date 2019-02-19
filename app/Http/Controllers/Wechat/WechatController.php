@@ -151,8 +151,6 @@ class WechatController extends Controller
             "button"=>[
                 [
                     "name"=>"一级菜单",
-
-
                     "sub_button"=>[
                         [
                             "type"=>"view",
@@ -161,27 +159,29 @@ class WechatController extends Controller
                         ],
                         [
                             "type"=>"miniprogram",
-                            "name"=>"微信",
+                            "name"=>"微信抽奖",
                             "url"=>"http://mp.weixin.qq.com",
                             "appid"=>"wxe072a1fff4e9a930",
                             "pagepath"=>"pages/lunar/index"
                         ],
+                    ]
+                ],
+                [
+                    "name"=>"百度一下",
+                    "sub_button"=>[
                         [
-                            "type"=>"click",
-                            "name"=>"赞一下我们",
-                            "key"=>"V1001_GOOD"
+                            "type"=>"view",
+                            "name"=>"进入百度",
+                            "url"=>"https://baidu.com/"
+                        ],
+                        [
+                            "type"=>"miniprogram",
+                            "name"=>"微信扫码",
+                            "url"=>"http://mp.weixin.qq.com",
+                            "appid"=>"wx94cc1e8ca88dde8a",
+                            "pagepath"=>"pages/lunar/index"
                         ]
                     ]
-                ]
-            ],
-            [
-                "name"=>"进入百度",
-                "sub_button"=>[
-                    [
-                        "type"=>"view",
-                        "name"=>"网易云",
-                        "url"=>"https://baidu.com/"
-                    ],
                 ]
             ]
         ];
