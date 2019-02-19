@@ -76,7 +76,7 @@ class WechatController extends Controller
                 $id = WechatUser::insertGetId($user_data);      //保存用户信息
                 var_dump($id);
             }
-        }elseif($event=='MINIPROGRAM'){               //click 菜单
+        }elseif($event=='CLICK'){               //click 菜单
             if($xml->EventKey=='kefu01'){
                 $this->kefu01($openid,$xml->ToUserName);
             }
@@ -201,7 +201,12 @@ class WechatController extends Controller
                             "url"=>"http://mp.weixin.qq.com",
                             "appid"=>"wxe072a1fff4e9a930",
                             "pagepath"=>"pages/lunar/index"
-                        ]
+                        ],
+                        [
+                        "type"=>"click",
+                        "name"=>"赞一下我们",
+                        "key"=>"kefu01"
+                    ]
                     ]
                 ]
             ]
