@@ -151,6 +151,8 @@ class WechatController extends Controller
             "button"=>[
                 [
                     "name"=>"一级菜单",
+
+
                     "sub_button"=>[
                         [
                             "type"=>"view",
@@ -170,6 +172,14 @@ class WechatController extends Controller
                             "key"=>"V1001_GOOD"
                         ]
                     ]
+                ]
+
+            ],
+            "button"=>[
+                [
+                    "type"  => "view",      // view类型 跳转指定 URL
+                    "name"  => "进入百度",
+                    "url"   => "https://www.baidu.com"
                 ]
             ]
         ];
