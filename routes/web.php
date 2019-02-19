@@ -116,4 +116,4 @@ Route::get('/wechat/test','Wechat\WechatController@test');
 Route::get('/wechat/valid1','Wechat\WechatController@validToken1');
 Route::post('/wechat/valid1','Wechat\WechatController@wxEvent');        //接收微信服务器事件推送
 Route::post('/wechat/valid','Wechat\WechatController@validToken');
-Route::get('/wechat/create_menu','Wechat\WechatController@createMenu');     //创建菜单
+Route::get('','Wechat\WechatController@createMenu');     //创建菜单/wechat/create_menu

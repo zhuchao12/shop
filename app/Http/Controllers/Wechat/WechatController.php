@@ -153,7 +153,19 @@ class WechatController extends Controller
                     "type"  => "view",      // view类型 跳转指定 URL
                     "name"  => "进入百度",
                     "url"   => "https://www.baidu.com"
-                ]
+                ],
+                [
+                "type" => "miniprogram",
+                "name" => "微信扫码",
+                "url"=>"http://mp.weixin.qq.com",
+                "appid"=>"wxe072a1fff4e9a930",
+                "pagepath"=>"pages/lunar/index"
+            ],
+            [
+                "type"=>"click",
+                "name"=>"赞一下我们",
+                "key"=>"V1001_GOOD"
+            ]
             ]
         ];
 
