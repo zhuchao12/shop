@@ -171,9 +171,7 @@ class WechatController extends Controller
         $data= [
             "button"=>[
                 [
-                    "type"=>"click",
                     "name"=>"一级菜单",
-                    "key"=>"kefu01",
                     "sub_button"=>[
                         [
                             "type"=>"view",
@@ -204,6 +202,11 @@ class WechatController extends Controller
                             "appid"=>"wxe072a1fff4e9a930",
                             "pagepath"=>"pages/lunar/index"
                         ],
+                        [
+                        "type"=>"click",
+                        "name"=>"赞一下我们",
+                        "key"=>"kefu01"
+                    ]
                     ]
                 ]
             ]
