@@ -47,6 +47,25 @@ class WechatController extends Controller
         $event = $xml->Event;                       //事件类型
         //var_dump($xml);echo '<hr>';
         $openid = $xml->FromUserName;               //用户openid
+
+        // 处理用户发送消息
+        if(isset($xml->MsgType)){
+            if($xml->MsgType=='text'){            //用户发送文本消息
+                $msg = $xml->Content;
+                $xml_response =
+                    '<xml>
+                        <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                        <FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName>
+                        <CreateTime>'.time().'</CreateTime>
+                        <MsgType><![CDATA[text]]></MsgType>
+                        <Content><![CDATA['. $msg. date('Y-m-d H:i:s') .']]></Content>
+                     </xml>';
+                echo $xml_response;
+                exit();
+            }
+        }
+
+
         if($event=='subscribe'){
             $sub_time = $xml->CreateTime;               //扫码关注时间
 
