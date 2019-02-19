@@ -46,9 +46,8 @@ class WechatController extends Controller
 
         $event = $xml->Event;                       //事件类型
         //var_dump($xml);echo '<hr>';
-
+        $openid = $xml->FromUserName;               //用户openid
         if($event=='subscribe'){
-            $openid = $xml->FromUserName;               //用户openid
             $sub_time = $xml->CreateTime;               //扫码关注时间
 
 
@@ -77,10 +76,32 @@ class WechatController extends Controller
                 $id = WechatUser::insertGetId($user_data);      //保存用户信息
                 var_dump($id);
             }
+        }elseif($event=='CLICK'){               //click 菜单
+            if($xml->EventKey=='kefu01'){
+                $this->kefu01($openid,$xml->ToUserName);
+            }
         }
 
         $log_str = date('Y-m-d H:i:s') . "\n" . $data . "\n<<<<<<<";
         file_put_contents('logs/wx_event.log',$log_str,FILE_APPEND);
+    }
+
+    /**
+     * 客服处理
+     * @param $openid   用户openid
+     * @param $from     开发者公众号id 非 APPID
+     */
+    public function kefu01($openid,$from)
+    {
+        // 文本消息
+        $xml_response =
+            '<xml>
+                <ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName>
+                <CreateTime>'.time().'</CreateTime>
+                <MsgType><![CDATA[text]]></MsgType>
+                <Content><![CDATA['. 'Hello World, 现在时间'. date('Y-m-d H:i:s') .']]></Content>
+            </xml>';
+        echo $xml_response;
     }
 
 
