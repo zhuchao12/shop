@@ -81,7 +81,14 @@ class WechatController extends Controller
     {
         $grid = new Grid(new WechatUser);
 
-
+        $grid->id('Id');
+        $grid->uid('Uid');
+        $grid->openid('Openid');
+        $grid->add_time('Add time');
+        $grid->nickname('Nickname');
+        $grid->sex('Sex');
+        $grid->headimgurl('Headimgurl');
+        $grid->subscribe_time('Subscribe time');
 
         return $grid;
     }
@@ -96,7 +103,14 @@ class WechatController extends Controller
     {
         $show = new Show(WechatUser::findOrFail($id));
 
-
+        $show->id('Id');
+        $show->uid('Uid');
+        $show->openid('Openid');
+        $show->add_time('Add time');
+        $show->nickname('Nickname');
+        $show->sex('Sex');
+        $show->headimgurl('Headimgurl');
+        $show->subscribe_time('Subscribe time');
 
         return $show;
     }
@@ -109,6 +123,14 @@ class WechatController extends Controller
     protected function form()
     {
         $form = new Form(new WechatUser);
+
+        $form->number('uid', 'Uid');
+        $form->text('openid', 'Openid');
+        $form->number('add_time', 'Add time');
+        $form->text('nickname', 'Nickname');
+        $form->switch('sex', 'Sex');
+        $form->text('headimgurl', 'Headimgurl');
+        $form->number('subscribe_time', 'Subscribe time');
 
         return $form;
     }
