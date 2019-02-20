@@ -6,8 +6,8 @@ use App\Model\WechatUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp;
-
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
 
 class WechatController extends Controller
 {
