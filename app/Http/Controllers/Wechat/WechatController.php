@@ -163,37 +163,6 @@ class WechatController extends Controller
     }
 
     /**
-     * 群发消息
-     */
-    public function text01(){
-        $url = 'https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token='.$this->getWXAccessToken() ;
-        /*
-        $param = '{
-                 "filter":{
-                     "is_to_all":true
-             },
-                "text":{
-                   "content":"王贺伟傻逼."
-             },
-                   "msgtype":"text"
-        }';
-        */
-            $param = '{
-               "filter":{
-                  "is_to_all":true
-               },
-               "text":{
-                 "content":"百度一下."
-               },
-                "msgtype":"text",
-            }';
-            $result = CurlPost($url,$param);
-            var_dump($result);
-
-}
-
-
-    /**
      * 下载语音文件
      * @param $media_id
      */

@@ -12,7 +12,7 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
     $router->resource('/goods',GoodsController::class);
+    $router->resource('/wechat',WechatController::class);
     //$router->resource('/users',UsersController::class);
-
 
 });
