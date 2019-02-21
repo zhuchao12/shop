@@ -85,8 +85,6 @@ class WechatController extends Controller
                         'msg_id' => $xml->MsgId,
                         'local_file_name' => $file_name
                     ];
-
-                    
                     $m_id = MediaUser::insertGetId($data);
                     var_dump($m_id);
 
@@ -144,8 +142,10 @@ class WechatController extends Controller
                 }
             }
 
+            /*
             $log_str = date('Y-m-d H:i:s') . "\n" . $data . "\n<<<<<<<";
             file_put_contents('logs/wx_event.log', $log_str, FILE_APPEND);
+            */
         }
     }
 
