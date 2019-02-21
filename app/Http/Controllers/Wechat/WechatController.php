@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Wechat;
 
+use App\Model\MediaUser;
 use App\Model\WechatUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
+
 
 class WechatController extends Controller
 {
@@ -84,7 +86,7 @@ class WechatController extends Controller
                         'local_file_name' => $file_name
                     ];
 
-                    $m_id = WeixinMedia::insertGetId($data);
+                    $m_id = MediaUser::insertGetId($data);
                     var_dump($m_id);
 
                 }
