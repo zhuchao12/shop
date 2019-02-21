@@ -118,3 +118,12 @@ Route::post('/wechat/valid1','Wechat\WechatController@wxEvent');        //接收
 Route::post('/wechat/valid','Wechat\WechatController@validToken');
 Route::get('/wechat/qun','Wechat\WechatController@all');
 Route::get('','Wechat\WechatController@createMenu');     //创建菜单/wechat/create_menu
+
+
+Route::get('/form/show','Wechat\WechatController@formShow');     //表单测试
+Route::post('/form/test','Wechat\WechatController@formTest');     //表单测试
+
+
+Route::get('/Wechat/material/list','Wechat\WechatController@materialList');     //获取永久素材列表
+Route::get('/Wechat/material/upload','Wechat\WechatController@upMaterial');     //上传永久素材
+Route::post('/Wechat/material','Wechat\WechatController@materialTest');     //创建菜单
