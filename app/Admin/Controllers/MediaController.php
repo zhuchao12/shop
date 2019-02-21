@@ -113,7 +113,7 @@ class MediaController extends Controller
         $show->media_id('Media id');
         $show->format('Format');
         $show->msg_id('Msg id');
-        $show->local_file_name('Local file name')->display(function ($data){
+        $show->local_file_name('Local file name')->display(function($data){
             return '<img src="/wx/images/'.$data.'">';
         });
         $show->local_file_path('Local file path');
