@@ -86,6 +86,7 @@ class WechatController extends Controller
                         'local_file_name' => $file_name
                     ];
 
+                    
                     $m_id = MediaUser::insertGetId($data);
                     var_dump($m_id);
 
