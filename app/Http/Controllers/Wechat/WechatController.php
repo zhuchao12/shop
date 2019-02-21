@@ -480,7 +480,7 @@ class WechatController extends Controller
     public function formShow()
     {
 
-        return view('test.form');
+        return view('wechat.wechat');
 
     }
 
