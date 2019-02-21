@@ -8,11 +8,7 @@
 <form action="{{url('/form/test')}}" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
     <h1>微信素材添加页面</h1>
-    <table border="1">
-        <tr>
-            <td><h2>文本</h2></td>
-            <td><input type="text" name="msg"></td>
-        </tr>
+    <table>
         <tr>
             <td><h2>图片上传</h2></td>
             <td><input type="file" name="media"></td>
