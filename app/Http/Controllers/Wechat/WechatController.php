@@ -175,6 +175,7 @@ class WechatController extends Controller
         }else{      //保存失败
             echo '保存失败';
         }
+        return $file_name;
     }
 
     public function all()
