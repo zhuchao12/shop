@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 class WechatController extends Controller
 {
+    protected $redis_weixin_access_token = 'str:weixin_access_token';     //微信 access_token
     use HasResourceActions;
 
     /**
