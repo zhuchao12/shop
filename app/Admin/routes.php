@@ -16,7 +16,7 @@ Route::group([
     $router->resource('/media',MediaController::class);
     //$router->resource('/users',UsersController::class);v
 
-    $router->get('/wechat/sendmsg','WechatController@sendMsgView');      //
-    $router->post('/wechat/sendmsg','WechatController@sendMsg');
+    $router->get('/sendmsg','WechatController@sendMsgView');      //
+    $router->post('/sendmsg','WechatController@sendMsg');
 
 });
