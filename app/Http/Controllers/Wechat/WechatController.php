@@ -482,6 +482,8 @@ class WechatController extends Controller
 
         return view('wechat.wechat');
 
+
+
     }
 
     public function formTest(Request $request)
@@ -512,8 +514,6 @@ class WechatController extends Controller
 
         //上传至微信永久素材
         $this->upMaterialTest($save_file_path);
-
-
     }
 
 }
