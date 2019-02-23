@@ -82,7 +82,6 @@ class MaterialController extends Controller
         $grid = new Grid(new MaterialUser);
 
         $grid->id('Id');
-        $grid->test('Test');
         $grid->url('Url')->display(function($data){
             return '<img src="/'.$data.'"width=80px;height=80px>';
         });
@@ -104,7 +103,6 @@ class MaterialController extends Controller
         $show = new Show(MaterialUser::findOrFail($id));
 
         $show->id('Id');
-        $show->test('Test');
         $show->url('Url');
         $show->add_time('Add_time');
 
@@ -119,8 +117,6 @@ class MaterialController extends Controller
     protected function form()
     {
         $form = new Form(new MaterialUser);
-
-        $form->text('test', 'Test');
         $form->url('url', 'Url');
         $form->number('add_time', 'Add_time');
 
