@@ -14,9 +14,10 @@ Route::group([
     $router->resource('/goods',GoodsController::class);
     $router->resource('/wechat',WechatController::class);
     $router->resource('/media',MediaController::class);
+    $router->resource('/material',MaterialController::class);
     //$router->resource('/users',UsersController::class);v
 
-    $router->get('/sendmsg','WechatController@sendMsgView');      //
-    $router->post('/sendmsg','WechatController@sendMsg');
+        $router->get('/sendmsg','WechatController@sendMsgView');      //
+        $router->post('/sendmsg','WechatController@sendMsg');
 
 });

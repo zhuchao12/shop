@@ -356,10 +356,10 @@ class WechatController extends Controller
                             "pagepath"=>"pages/lunar/index"
                         ],
                         [
-                            "type"=>"click",
-                            "name"=>"赞一下我们",
-                            "key"=>"kefu01"
-                        ]
+                        "type"=>"click",
+                        "name"=>"赞一下我们",
+                        "key"=>"kefu01"
+                    ]
                     ]
                 ]
             ]

@@ -21,7 +21,7 @@ class WechatController extends Controller
     /**
      * Index interface.
      *
-     * @param Content $content
+     * @param Content $content4
      * @return Content
      */
     public function index(Content $content)
