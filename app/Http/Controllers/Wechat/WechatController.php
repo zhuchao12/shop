@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Wechat;
 
+use App\Model\MaterialUser;
 use App\Model\MediaUser;
 use App\Model\WechatUser;
 use Illuminate\Http\Request;
@@ -512,6 +513,12 @@ class WechatController extends Controller
 
         echo 'save_file_path: '.$save_file_path;echo '<hr>';
 
+        $data=[
+            'url'=>$save_file_path,
+            'add_time'=>time()
+        ];
+
+        $r=MaterialUser::insertGetId($data);
         //上传至微信永久素材
         $this->upMaterialTest($save_file_path);
     }
