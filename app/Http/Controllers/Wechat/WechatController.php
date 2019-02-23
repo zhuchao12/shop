@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Wechat;
 use App\Model\MaterialUser;
 use App\Model\MediaUser;
 use App\Model\WechatUser;
+use App\Model\WechatChatModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp;
@@ -55,6 +56,25 @@ class WechatController extends Controller
         if (isset($xml->MsgType)) {
             if ($xml->MsgType == 'text') {            //用户发送文本消息
                 $msg = $xml->Content;
+
+                //记录聊天消息
+
+                $data = [
+                    'msg'       => $xml->Content,
+                    'msgid'     => $xml->MsgId,
+                    'openid'    => $openid,
+                    'msg_type'  => 1        // 1用户发送消息 2客服发送消息
+                ];
+
+                $id = WechatChatModel::insertGetId($data);
+                var_dump($id);
+                //$xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. $msg. date('Y-m-d H:i:s') .']]></Content></xml>';
+
+
+                //echo $xml_response;
+
+
+
                 $xml_response =
                     '<xml>
                         <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
@@ -474,10 +494,6 @@ class WechatController extends Controller
 
     }
 
-
-
-
-
     public function formShow()
     {
 
@@ -523,4 +539,39 @@ class WechatController extends Controller
         $this->upMaterialTest($save_file_path);
     }
 
+
+    /**
+     * 微信客服聊天
+     */
+    public function chatView()
+    {
+        $data = [
+            'openid'    => 'oLreB1jAnJFzV_8AGWUZlfuaoQto'
+        ];
+        return view('wechat.chat',$data);
+    }
+
+
+    public function getChatMsg()
+    {
+        $openid = $_GET['openid'];  //用户openid
+        $pos = $_GET['pos'];        //上次聊天位置
+        $msg = WechatChatModel::where(['openid'=>$openid])->where('id','>',$pos)->first();
+        //$msg = WeixinChatModel::where(['openid'=>$openid])->where('id','>',$pos)->get();
+        if($msg){
+            $response = [
+                'errno' => 0,
+                'data'  => $msg->toArray()
+            ];
+
+        }else{
+            $response = [
+                'errno' => 50001,
+                'msg'   => '服务器异常，请联系管理员'
+            ];
+        }
+
+        die( json_encode($response));
+
+    }
 }

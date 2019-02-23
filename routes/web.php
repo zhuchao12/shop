@@ -127,3 +127,7 @@ Route::post('/form/test','Wechat\WechatController@formTest');     //表单测试
 Route::get('/Wechat/material/list','Wechat\WechatController@materialList');     //获取永久素材列表
 Route::get('/Wechat/material/upload','Wechat\WechatController@upMaterial');     //上传永久素材
 Route::post('/Wechat/material','Wechat\WechatController@materialTest');     //创建菜单
+
+//微信聊天
+Route::get('/Wechat/kefu/chat','Wechat\WechatController@chatView');     //客服聊天
+Route::get('/Wechat/chat/get_msg','Wechat\WechatController@getChatMsg');     //获取用户聊天信息
