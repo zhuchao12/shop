@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MaterialUser extends Model
 {
-    public $table = 'materia';
+    public $table = 'material';
     public $timestamps = false;
 
 }
