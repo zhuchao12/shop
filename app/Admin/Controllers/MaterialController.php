@@ -86,7 +86,7 @@ class MaterialController extends Controller
         $grid->url('Url')->display(function($data){
             return '<img src="/'.$data.'"width=80px;height=80px>';
         });
-        $grid->atime('Add_time')->display(function($time){
+        $grid->add_time('Add_time')->display(function($time){
             return date('Y-m-d H:s:i',$time);
         });
 
@@ -106,7 +106,7 @@ class MaterialController extends Controller
         $show->id('Id');
         $show->test('Test');
         $show->url('Url');
-        $show->atime('Add_time');
+        $show->add_time('Add_time');
 
         return $show;
     }
