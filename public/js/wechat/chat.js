@@ -5,7 +5,7 @@ setInterval(function(){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url     :   '/wechat/chat/get_msg?openid=' + openid + '&pos=' + $("#msg_pos").val(),
+        url     :   '/Wechat/chat/get_msg?openid=' + openid + '&pos=' + $("#msg_pos").val(),
         type    :   'get',
         dataType:   'json',
         success :   function(d){
