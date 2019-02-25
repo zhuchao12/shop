@@ -29,27 +29,29 @@ $("#send_msg_btn").click(function(e){
     e.preventDefault();
     var send_msg = $("#send_msg").val().trim();
     var openid = $("#openid").val().trim();
+   // var msg_str = '<p style="color: mediumorchid"> >>>>> '+send_msg+'</p>';
+    setInterval(function(){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url     :   '/weixin/chat/get_msgs?send_msg=' + send_msg + '&openid=' +openid,
+            type    :   'get',
+            dataType:   'json',
+            success :   function(d){
+                if(d.errno==0){     //服务器响应正常
+                    //数据填充
+                    var msg_str = '<blockquote>' + d.data.add_time +
+                        '<p>' + d.data.msg + '</p>' +
+                        '</blockquote>';
 
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url     :   '/wechat/chat/get_msgs?send_msg=' + send_msg + '&openid=' + openid,
-        type    :   'get',
-        dataType:   'json',
-        success :   function(d){
-            if(d.errno==0){     //服务器响应正常
-                //数据填充
-                var msg_str = '<blockquote>' + d.data.created_at +
-                    '<p>' + d.data.msg + '</p>' +
-                    '</blockquote>';
+                    $("#chat_div").append(msg_str);
+                    $("#msg_pos").val(d.data.id)
+                }else{
 
-                $("#chat_div").append(msg_str);
-                $("#msg_pos").val(d.data.id)
-            }else{
-
+                }
             }
-        }
-    });
-});
+        });
+    },1000);
 
+});
