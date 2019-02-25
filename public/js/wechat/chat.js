@@ -34,7 +34,7 @@ $("#send_msg_btn").click(function(e){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url     :   '/weixin/chat/get_msgs?send_msg=' + send_msg + '&openid=' + openid,
+        url     :   '/wechat/chat/get_msgs?send_msg=' + send_msg + '&openid=' + openid,
         type    :   'get',
         dataType:   'json',
         success :   function(d){
