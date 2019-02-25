@@ -583,6 +583,17 @@ class WechatController extends Controller
         $send_msg = $_GET['send_msg'];  //用户openid
         $openid = $_GET['openid'];        //上次聊天位置
 
+        $data=[
+            'openid'=>$openid,
+            'msg'=>$send_msg,
+            'msgid'=>'空',
+            'add_time'=>time(),
+            'msg_type'=>2
+        ];
+        $res=WechatChatModel::insertGetId($data);
+        var_dump($res);
+        exit;
+
         //获取access_token
         $access_token=$this->getWXAccessToken();
         $url='https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$access_token;
