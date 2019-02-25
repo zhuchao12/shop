@@ -131,3 +131,4 @@ Route::post('/Wechat/material','Wechat\WechatController@materialTest');     //�
 //微信聊天
 Route::get('/Wechat/kefu/chat/{id}','Wechat\WechatController@chatView');     //客服聊天
 Route::get('/weixin/chat/get_msg','Wechat\WechatController@getChatMsg');     //获取用户聊天信息
+Route::post('/chat/msg','Weixin\WeixinController@chatmsg');  //客服发送消息

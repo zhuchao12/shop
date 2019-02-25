@@ -576,4 +576,38 @@ class WechatController extends Controller
         die( json_encode($response));
 
     }
+
+
+    public function chatmsg(Request $request){
+        $open_id = $request->input('openid');
+        $msg = $request->input('msg');
+        //echo $msg;
+        $url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$this->getWXAccessToken();
+        $data = [
+            'openid'       =>$open_id,
+            'msgtype'      =>'text',
+            'text'         =>[
+                'content'  =>$msg,
+            ]
+        ];
+        $client = new GuzzleHttp\Client();
+        $response = $client->request('POST', $url, [
+            'body' => json_encode($data,JSON_UNESCAPED_UNICODE)
+        ]);
+        $body = $response->getBody();
+        $arr = json_decode($body,true);
+        //加入数据库
+        if($arr['errcode']==0){
+            $info = [
+                'msg_type'      =>  2,
+                'msg'   =>  $msg,
+                'msgid'     =>  0,
+                'add_time'  =>  time(),
+                'openid'   =>  $open_id,
+            ];
+            MaterialUser::insertGetId($info);
+        }
+        return $arr;
+    }
+
 }

@@ -24,13 +24,28 @@ setInterval(function(){
     });
 },1000);
 
-// 客服发送消息 begin
-$("#send_msg_btn").click(function(e){
+//客服发送消息
+$('#send_msg_btn').click(function (e) {
     e.preventDefault();
-    var send_msg = $("#send_msg").val().trim();
-    var msg_str = '<p style="color: mediumorchid"> >>>>> '+send_msg+'</p>';
-    $("#chat_div").append(msg_str);
-    $("#send_msg").val("");
-
-});
-// 客服发送消息 end
+    var send_msg = $('#send_msg').val().trim();
+    console.log(send_msg);
+    //console.log(message);
+    //$("#chat_div").append(msg_str);
+    $('#send_msg').val('');
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/chat/msg',
+        type: 'post',
+        data: {openid: openid, msg: send_msg},
+        dataType: 'json',
+        success: function (a) {
+            if (a.errcode == 0) {
+                alert('发送成功');
+            } else {
+                alert('发送失败');
+            }
+        }
+    })
+})

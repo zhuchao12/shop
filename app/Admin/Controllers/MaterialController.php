@@ -119,7 +119,6 @@ class MaterialController extends Controller
         $form = new Form(new MaterialUser);
         $form->url('url', 'Url');
         $form->number('add_time', 'Add_time');
-
         return $form;
     }
 
