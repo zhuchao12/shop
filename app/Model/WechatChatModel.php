@@ -8,4 +8,5 @@ class WechatChatModel extends Model
 {
     //
     public $table = 'chat';
+    public $timestamps = false;
 }
