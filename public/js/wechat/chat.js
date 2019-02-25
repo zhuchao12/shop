@@ -31,5 +31,6 @@ $("#send_msg_btn").click(function(e){
     var msg_str = '<p style="color: mediumorchid"> >>>>> '+send_msg+'</p>';
     $("#chat_div").append(msg_str);
     $("#send_msg").val("");
+
 });
 // 客服发送消息 end

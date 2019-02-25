@@ -1,22 +1,21 @@
 @extends('layout.main')
 
-@section('title')    @endsection
-
-@section('header')
-    @parent
-@endsection
-
 @section('content')
-    <h1>客服聊天:<i style="color:red">openid:{{$openid}}</i></h1>
-    <div style="border:6px yellow solid; width: 600px;" id="chat_div"></div>
-    <br>
-    <form action="">
-        <input type="hidden" value="{{$openid}}" id="openid">
+    <div class="container">c
+        <h2>开聊... openid:{{$openid}}</h2>
 
-        <input type="hidden" value="1" id="msg_pos">                <!--上次聊天位置-->
-        <input type="text" id="send_msg">
-        <input type="submit" value="发送" id="send_msg_btn">
-    </form>
+        <div class="chat" id="chat_div">
+
+        </div>
+        <hr>
+
+        <form action="" class="form-inline">
+            <input type="hidden" value="{{$openid}}" id="openid">
+            <input type="hidden" value="1" id="msg_pos">
+            <textarea name="" id="send_msg" cols="100" rows="5"></textarea>
+            <button class="btn btn-info" id="send_msg_btn">Send</button>
+        </form>
+    </div>
 @endsection
 @section('footer')
     @parent
