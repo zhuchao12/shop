@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-    <div class="container">
+    <div class="container">c
         <h2>开聊... openid:{{$openid}}</h2>
 
         <div class="chat" id="chat_div">

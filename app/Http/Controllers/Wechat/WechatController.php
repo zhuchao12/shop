@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Wechat;
 
 use App\Model\MaterialUser;
@@ -63,7 +62,8 @@ class WechatController extends Controller
                     'msg'       => $xml->Content,
                     'msgid'     => $xml->MsgId,
                     'openid'    => $openid,
-                    'msg_type'  => 1        // 1用户发送消息 2客服发送消息
+                    'msg_type'  => 1,    // 1用户发送消息 2客服发送消息
+                    'add_time' =>time(),
                 ];
 
                 $id = WechatChatModel::insertGetId($data);
@@ -543,10 +543,12 @@ class WechatController extends Controller
     /**
      * 微信客服聊天
      */
-    public function chatView()
+    public function chatView($id)
     {
+
+        $userInfo = WechatUser::where(['id'=>$id])->first();
         $data = [
-            'openid'    => 'oLreB1jAnJFzV_8AGWUZlfuaoQto'
+            'openid'    => $userInfo->openid
         ];
         return view('wechat.chat',$data);
     }
