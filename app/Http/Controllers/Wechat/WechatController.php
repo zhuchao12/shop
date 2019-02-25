@@ -577,37 +577,42 @@ class WechatController extends Controller
 
     }
 
+    public function getChatMsgs()
+    {
 
-    public function chatmsg(Request $request){
-        $open_id = $request->input('openid');
-        $msg = $request->input('msg');
-        //echo $msg;
-        $url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$this->getWXAccessToken();
-        $data = [
-            'openid'       =>$open_id,
-            'msgtype'      =>'text',
-            'text'         =>[
-                'content'  =>$msg,
+        $send_msg = $_GET['send_msg'];  //用户openid
+        $openid = $_GET['openid'];        //上次聊天位置
+
+        //获取access_token
+        $access_token=$this->getWXAccessToken();
+        $url='https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$access_token;
+        //请求微信接口
+        $client = new GuzzleHttp\Client(['base_uri' => $url]);
+        $data=[
+            "touser"=>$openid,
+            'msgtype'=>'text',
+            'text'=>[
+                "content"=>$send_msg
             ]
         ];
-        $client = new GuzzleHttp\Client();
-        $response = $client->request('POST', $url, [
-            'body' => json_encode($data,JSON_UNESCAPED_UNICODE)
-        ]);
-        $body = $response->getBody();
-        $arr = json_decode($body,true);
-        //加入数据库
-        if($arr['errcode']==0){
-            $info = [
-                'msg_type'      =>  2,
-                'msg'   =>  $msg,
-                'msgid'     =>  0,
-                'add_time'  =>  time(),
-                'openid'   =>  $open_id,
+        $res=$client->request('POST', $url, ['body' => json_encode($data,JSON_UNESCAPED_UNICODE)]);
+        $res_arr=json_decode($res->getBody(),true);
+        if($res_arr['errcode']==0&&$res_arr['errmsg']=='ok'){
+            //将聊天记录保存到数据库
+            $data=[
+                'openid'=>$openid,
+                'msg'=>$send_msg,
+                'msgid'=>'空',
+                'add_time'=>time(),
+                'msg_type'=>2
             ];
-            MaterialUser::insertGetId($info);
+            $res=WechatChatModel::insertGetId($data);
+            var_dump($res);
         }
-        return $arr;
+
+
+
     }
+
 
 }
