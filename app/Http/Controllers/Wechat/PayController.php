@@ -39,8 +39,8 @@ class PayController extends Controller
         $this->SetSign();
 
         $xml = $this->ToXml();      //将数组转换为XML
-        var_dump($xml);
-        exit;
+        //var_dump($xml);
+      //  exit;
         $rs = $this->postXmlCurl($xml, $this->weixin_unifiedorder_url, $useCert = false, $second = 30);
 
         $data =  simplexml_load_string($rs);
