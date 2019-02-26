@@ -9,8 +9,6 @@ use App\Model\OrderModel;
 
 class PayController extends Controller
 {
-    //
-
     public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
     public $weixin_notify_url = 'http://shop07.wjk1106.cn/weixin/pay/notice';     //支付通知回调
 
@@ -41,22 +39,12 @@ class PayController extends Controller
         $this->SetSign();
 
         $xml = $this->ToXml();      //将数组转换为XML
+        var_dump($xml);
+        exit;
         $rs = $this->postXmlCurl($xml, $this->weixin_unifiedorder_url, $useCert = false, $second = 30);
 
         $data =  simplexml_load_string($rs);
-//        //var_dump($data);echo '<hr>';
-//        echo 'return_code: '.$data->return_code;echo '<br>';
-//		echo 'return_msg: '.$data->return_msg;echo '<br>';
-//		echo 'appid: '.$data->appid;echo '<br>';
-//		echo 'mch_id: '.$data->mch_id;echo '<br>';
-//		echo 'nonce_str: '.$data->nonce_str;echo '<br>';
-//		echo 'sign: '.$data->sign;echo '<br>';
-//		echo 'result_code: '.$data->result_code;echo '<br>';
-//		echo 'prepay_id: '.$data->prepay_id;echo '<br>';
-//		echo 'trade_type: '.$data->trade_type;echo '<br>';
         echo 'code_url: '.$data->code_url;echo '<br>';
-//        die;
-        //echo '<pre>';print_r($data);echo '</pre>';
 
         //将 code_url 返回给前端，前端生成 支付二维码
 
@@ -95,14 +83,6 @@ class PayController extends Controller
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         //要求结果为字符串且输出到屏幕上
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-//		if($useCert == true){
-//			//设置证书
-//			//使用证书：cert 与 key 分别属于两个.pem文件
-//			curl_setopt($ch,CURLOPT_SSLCERTTYPE,'PEM');
-//			curl_setopt($ch,CURLOPT_SSLCERT, WxPayConfig::SSLCERT_PATH);
-//			curl_setopt($ch,CURLOPT_SSLKEYTYPE,'PEM');
-//			curl_setopt($ch,CURLOPT_SSLKEY, WxPayConfig::SSLKEY_PATH);
-//		}
         //post提交方式
         curl_setopt($ch, CURLOPT_POST, TRUE);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
