@@ -559,7 +559,6 @@ class WechatController extends Controller
         $openid = $_GET['openid'];  //用户openid
         $pos = $_GET['pos'];        //上次聊天位置
         $msg = WechatChatModel::where(['openid'=>$openid])->where('id','>',$pos)->first();
-        //$msg = WeixinChatModel::where(['openid'=>$openid])->where('id','>',$pos)->get();
         if($msg){
             $response = [
                 'errno' => 0,

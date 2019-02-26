@@ -132,3 +132,8 @@ Route::post('/Wechat/material','Wechat\WechatController@materialTest');     //�
 Route::get('/Wechat/kefu/chat/{id}','Wechat\WechatController@chatView');     //客服聊天
 Route::get('/weixin/chat/get_msg','Wechat\WechatController@getChatMsg');     //获取用户聊天信息
 Route::get('/weixin/chat/get_msgs','Wechat\WechatController@getChatMsgs');     //获取用户聊天信息
+
+
+//微信支付
+Route::get('/wechat/pay/test','Wechat\PayController@test');     //微信支付测试
+Route::post('/wechat/pay/notice','Wechat\PayController@notice');     //微信支付通知回调

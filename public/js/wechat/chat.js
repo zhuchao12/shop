@@ -48,9 +48,7 @@ $("#send_msg_btn").click(function(e){
                     $("#chat_div").append(msg_str);
                     $("#msg_pos").val(d.data.id)
                 }else{
-
                 }
             }
         });
-
 });
