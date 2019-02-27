@@ -166,10 +166,8 @@ class PayController extends Controller
                 //修改数据库
 
                 $info = [
-                    'is_pay'        =>1,
-                    'pay_amount'    =>$xml->total_fee,
-                    'plat'          =>2,
-                    'pay_time'      =>time()
+                  'is_pay'=>1,
+                    'pay_amount'=>$xml->total_fee
                 ];
 
                 OrderModel::where(['order_sn'=>$xml->out_trade_no])->update($info);
