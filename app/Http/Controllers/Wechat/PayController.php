@@ -47,7 +47,7 @@ class PayController extends Controller
        // echo 'code_url: '.$data->code_url;echo '<br>';
 
         //将 code_url 返回给前端，前端生成 支付二维码
-        return view('wechat.pay',$data->code_url);
+        return view('wechat.pay',['code_url'=>$data->code_url]);
 
     }
 
