@@ -45,8 +45,8 @@ class PayController extends Controller
         $code_url = $data->code_url;
         //将 code_url 返回给前端，前端生成 支付二维码
         $info = [
-            'title' => '微信二维码',
             'code_url' => $code_url,
+            'title' => '微信二维码',
             'order_id' => $order_id
 
         ];

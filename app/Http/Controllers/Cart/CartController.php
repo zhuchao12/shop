@@ -54,7 +54,7 @@ class CartController extends Controller
         if($cart_goods){
             //获取商品最新信息
             foreach($cart_goods as $k=>$v){
-                $goods_info = GoodsModel::where(['goods_id'=>$v['goods_id']])->first()->toArray();
+                $goods_info = GoodsModel::where(['goods_id'=>$v['goods_id']])->first();
                 $goods_info['num']  = $v['num'];
                 //echo '<pre>';print_r($goods_info);echo '</pre>';
                 $list[] = $goods_info;
