@@ -28,6 +28,8 @@
                 type:    'get',
                 dataType: 'json',
                 success:   function (d) {
+                    console.log(d);
+                    exit;
                     if(d.error == 0){
                         alert(d.msg);
                         location.href = '/order/list'
