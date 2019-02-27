@@ -162,6 +162,16 @@ class PayController extends Controller
 
             if($sign){       //签名验证成功
                 //TODO 逻辑处理  订单状态更新
+                //修改数据库
+
+                $info = [
+                    'is_pay'        =>1,
+                    'pay_amount'    =>$xml->total_fee,
+                    'plat'          =>2,
+                    'add_ime'      =>time()
+                ];
+
+                OrderModel::where(['order_sn'=>$xml->out_trade_no])->update($info);
 
             }else{
                 //TODO 验签失败
