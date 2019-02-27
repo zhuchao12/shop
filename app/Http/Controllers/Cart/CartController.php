@@ -56,6 +56,8 @@ class CartController extends Controller
             foreach($cart_goods as $k=>$v){
                 $goods_info = GoodsModel::where(['goods_id'=>$v['goods_id']])->first();
                 $goods_info['num']  = $v['num'];
+                $goods_info['cart_id']  = $v['cart_id'];
+
                 //echo '<pre>';print_r($goods_info);echo '</pre>';
                 $list[] = $goods_info;
             }
