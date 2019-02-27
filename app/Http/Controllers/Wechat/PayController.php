@@ -156,21 +156,22 @@ class PayController extends Controller
         file_put_contents('logs/wx_pay_notice.log',$log_str,FILE_APPEND);
 
         $xml = simplexml_load_string($data,'SimpleXMLElement',LIBXML_NOCDATA);
-
+        var_dump($xml);
         if($xml['result_code']=='SUCCESS'&& $xml['return_code']=='SUCCESS'){      //微信支付成功回调
             //验证签名
-            $sign = true;
+                       $sign = true;
 
             if($sign){       //签名验证成功
                 //TODO 逻辑处理  订单状态更新
                 //修改数据库
 
                 $info = [
-                  'is_pay'=>1,
+                    'is_pay'=>1,
                     'pay_amount'=>$xml->total_fee
                 ];
 
-                OrderModel::where(['order_sn'=>$xml->out_trade_no])->update($info);
+                $re = OrderModel::where(['order_sn'=>$xml->out_trade_no])->update($info);
+                var_dump($re);
 
             }else{
                 //TODO 验签失败

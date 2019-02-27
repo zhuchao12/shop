@@ -139,3 +139,6 @@ Route::get('/wechat/pay/test/{order_sn}','Wechat\PayController@test');     //微
 Route::post('/wechat/pay/notice','Wechat\PayController@notice');     //微信支付通知回调
 Route::get('/wechat/pay/wxsuccess','Wechat\PayController@WxSuccess');     //微信支付通知回调
 
+
+
+
