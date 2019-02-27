@@ -12,7 +12,7 @@ class PayController extends Controller
     public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
     public $weixin_notify_url = 'http://shop07.wjk1106.cn/wechat/pay/notice';     //支付通知回调
 
-    public function test()
+    public function test($order_id)
     {
         $total_fee = 1;         //用户要支付的总金额
         $order_id = OrderModel::generateOrderSN();
@@ -42,9 +42,15 @@ class PayController extends Controller
 
         $data =  simplexml_load_string($rs);
        // echo 'code_url: '.$data->code_url;echo '<br>';
-
+        $code_url = $data->code_url;
         //将 code_url 返回给前端，前端生成 支付二维码
-        return view('wechat.pay',['code_url'=>$data->code_url]);
+        $info = [
+            'title' => '微信二维码',
+            'code_url' => $code_url,
+            'order_id' => $order_id
+
+        ];
+        return view('wechat.pay',$info);
 
     }
 
