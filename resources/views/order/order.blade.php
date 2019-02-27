@@ -19,7 +19,7 @@
                 <td class="success">
                     <li class="btn">
                         @if($v['is_pay']==0)
-                        <a href="/pay/list/{{$v['order_sn']}}">付款</a>
+                        <a href="/wechat/pay/test/{{$v['order_sn']}}">付款</a>
                             @elseif($v['is_pay']==1)
                             已付款
                             @endif
