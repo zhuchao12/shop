@@ -137,4 +137,5 @@ Route::get('/weixin/chat/get_msgs','Wechat\WechatController@getChatMsgs');     /
 //微信支付
 Route::get('/wechat/pay/test','Wechat\PayController@test');     //微信支付测试
 Route::post('/wechat/pay/notice','Wechat\PayController@notice');     //微信支付通知回调
+Route::post('/wechat/pay/wxsuccess','Wechat\PayController@notice');     //微信支付通知回调
 
