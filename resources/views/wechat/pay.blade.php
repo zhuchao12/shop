@@ -12,7 +12,7 @@
         var code=$('#code').val()
         // 设置参数方式
         var qrcode = new QRCode('qrcode', {
-            text:code ,
+            text:"{{$code_url}}" ,
             width: 200,
             height: 200,
             colorDark : '#000000',
