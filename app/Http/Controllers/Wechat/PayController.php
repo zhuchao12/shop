@@ -165,10 +165,10 @@ class PayController extends Controller
                 //修改数据库
 
                 $info = [
-                    'is_pay'        =>0,
+                    'is_pay'        =>1,
                     'pay_amount'    =>$xml->total_fee,
                     'plat'          =>2,
-                    'add_ime'      =>time()
+                    'add_time'      =>time()
                 ];
 
                 OrderModel::where(['order_sn'=>$xml->out_trade_no])->update($info);
@@ -197,14 +197,14 @@ class PayController extends Controller
             'order_id'  =>  $order_id,
         ];
         $order_info = OrderModel::where($where)->first();
-        if($order_info['is_pay']==0){
+        if($order_info['is_pay']==1){
             $response = [
-                'error' => 1,
+                'error' => 0,
                 'msg'   => '支付成功',
             ];
         }else{
             $response = [
-                'error' => 0,
+                'error' => 1,
                 'msg'   => '未支付',
             ];
         }
