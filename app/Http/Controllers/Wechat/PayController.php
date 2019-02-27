@@ -168,7 +168,7 @@ class PayController extends Controller
                     'is_pay'        =>1,
                     'pay_amount'    =>$xml->total_fee,
                     'plat'          =>2,
-                    'add_time'      =>time()
+                    'pay_time'      =>time()
                 ];
 
                 OrderModel::where(['order_sn'=>$xml->out_trade_no])->update($info);
