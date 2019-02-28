@@ -5,6 +5,7 @@ use App\Model\MaterialUser;
 use App\Model\MediaUser;
 use App\Model\WechatUser;
 use App\Model\WechatChatModel;
+use App\Model\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp;
@@ -640,9 +641,41 @@ class WechatController extends Controller
         $user_json = file_get_contents($user_info_url);
 
         $user_arr = json_decode($user_json,true);
-        echo '<hr>';
-        echo '<pre>';print_r($user_arr);echo '</pre>';
+      //  echo '<hr>';
+       // echo '<pre>';print_r($user_arr);echo '</pre>';
+
+        //查询数据库中该用户是否存在
+        $unionid = $user_arr['unionid'];
+        $where = [
+            'unionid'=>$unionid
+        ];
+        $wx_user_info = WechatUser::where($where)->first();
+        if($wx_user_info){
+
+            $user_info = UserModel::where(['id'=>$wx_user_info->id])->first();
+
+        }
+        if(empty($wx_user_info) || empty($user_info)){
+
+            //第一次登录
+
+            $data = [
+                'openid'        =>  $user_arr['openid'],
+                'nickname'      =>  $user_arr['nickname'],
+                'sex'           =>  $user_arr['sex'],
+                'headimgurl'    =>  $user_arr['headimgurl'],
+                'unionid'      =>  $unionid,
+                'add_time'      =>  time()
+
+            ];
+            $wechat_id = WechatUser::insertGetId($data);
+            $rs = UserModel::insertGetId(['wechat_id'=>$wechat_id]);
+            if($rs){
+                echo '注册成功';
+                exit;
+            }
+        }
+        echo '登录成功';
+
     }
-
-
 }
