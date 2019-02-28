@@ -645,9 +645,10 @@ class WechatController extends Controller
        // echo '<pre>';print_r($user_arr);echo '</pre>';
 
         //查询数据库中该用户是否存在
+
         $unionid = $user_arr['unionid'];
         $where = [
-            'unionid'=>$unionid
+            'union_id'=>$unionid
         ];
         $wx_user_info = WechatUser::where($where)->first();
         if($wx_user_info){
@@ -664,7 +665,7 @@ class WechatController extends Controller
                 'nickname'      =>  $user_arr['nickname'],
                 'sex'           =>  $user_arr['sex'],
                 'headimgurl'    =>  $user_arr['headimgurl'],
-                'unionid'      =>  $unionid,
+                'union_id'      =>  $unionid,
                 'add_time'      =>  time()
 
             ];
