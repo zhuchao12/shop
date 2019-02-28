@@ -615,7 +615,7 @@ class WechatController extends Controller
 
     public  function  login()
     {
-        $myurl="http:http://mall.77sc.com.cn/weixin.php?r1=http://shop07.wjk1106.cn/wechat/getcode";
+        $myurl="http://mall.77sc.com.cn/weixin.php?r1=http://shop07.wjk1106.cn/wechat/getcode";
         $data=[
         "url"=>'https://open.weixin.qq.com/connect/qrconnect?appid=wxe24f70961302b5a5&redirect_uri='.urlencode($myurl).'&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect'
         ];
