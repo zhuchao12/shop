@@ -670,7 +670,7 @@ class WechatController extends Controller
 
             ];
             $wechat_id = WechatUser::insertGetId($data);
-            $rs = UserModel::insertGetId(['wechat_id'=>$wechat_id]);
+            $rs = UserModel::insertGetId(['id'=>$wechat_id]);
             if($rs){
                 echo '注册成功';
                 exit;
