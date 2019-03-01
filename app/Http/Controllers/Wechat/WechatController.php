@@ -18,7 +18,7 @@ class WechatController extends Controller
     //
 
     protected $redis_weixin_access_token = 'str:weixin_access_token';     //微信 access_token
-
+    protected $redis_weixin_jsapi_ticket = 'str:weixin_jsapi_ticket';
     public function test()
     {
         //echo __METHOD__;
@@ -720,7 +720,6 @@ class WechatController extends Controller
 
     public function getJsapiTicket()
     {
-
         //是否有缓存
         $ticket = Redis::get($this->redis_weixin_jsapi_ticket);
         if(!$ticket){           // 无缓存 请求接口
