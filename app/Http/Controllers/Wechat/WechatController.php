@@ -681,7 +681,7 @@ class WechatController extends Controller
      * 微信jssdk 调试
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function jssdkTest()
+    public function jssdk()
     {
 
         //计算签名
