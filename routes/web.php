@@ -142,6 +142,8 @@ Route::get('/wechat/pay/wxsuccess','Wechat\PayController@WxSuccess');     //微�
 Route::get('/wechat/login','Wechat\WechatController@login');     //微信支付通知回调
 Route::get('/wechat/getcode','Wechat\WechatController@getCode');        //接收code
 
+Route::get('/wechat/jssdk','Wechat\WechatController@jssdk');        //接收code
+
 
 
 

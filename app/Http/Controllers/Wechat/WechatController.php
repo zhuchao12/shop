@@ -645,19 +645,13 @@ class WechatController extends Controller
 
         //查询数据库中该用户是否存在
 
-
-
-
-
         $unionid = $user_arr['unionid'];
         $where = [
             'union_id'=>$unionid
         ];
         $wx_user_info = WechatUser::where($where)->first();
         if($wx_user_info){
-
             $user_info = UserModel::where(['wechat_id'=>$wx_user_info->id])->first();
-
         }
         if(empty($wx_user_info) || empty($user_info)){
 
@@ -681,5 +675,9 @@ class WechatController extends Controller
         }
         echo '登录成功';
 
+    }
+
+    public function jssdk(){
+        return view('wechat.jssdk');
     }
 }
