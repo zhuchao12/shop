@@ -4,7 +4,7 @@
     <div class="container">
         <h2>JSSDK</h2>
 
-        <!--<button id="btn1">选择照片</button>-->
+        <button id="btn1">选择照片</button>
 
     </div>
 @endsection
@@ -22,7 +22,7 @@
             jsApiList: ['chooseImage','uploadImage','getLocalImgData','startRecord'] // 必填，需要使用的JS接口列表
         });
 
-       /*
+
         wx.ready(function(){
 
 
@@ -38,6 +38,5 @@
             });
 
         });
-        */
     </script>
 @endsection
