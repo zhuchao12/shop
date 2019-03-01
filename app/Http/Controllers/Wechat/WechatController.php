@@ -677,7 +677,27 @@ class WechatController extends Controller
 
     }
 
-    public function jssdk(){
-        return view('wechat.jssdk');
+    /**
+     * 微信jssdk 调试
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function jssdkTest()
+    {
+
+        //计算签名
+
+        $jsconfig = [
+            'appid' => env('WEIXIN_APPID_0'),        //APPID
+            'timestamp' => time(),
+            'noncestr'    => str_random(10),
+            //'sign'      => $this->wxJsConfigSign()
+        ];
+
+        $sign = $this->wxJsConfigSign($jsconfig);
+        $jsconfig['sign'] = $sign;
+        $data = [
+            'jsconfig'  => $jsconfig
+        ];
+        return view('wechat.jssdk',$data);
     }
 }
