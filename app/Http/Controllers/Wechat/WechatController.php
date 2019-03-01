@@ -623,7 +623,6 @@ class WechatController extends Controller
         return view('wechat.login',$data);
     }
 
-
     public function getCode(){
         $code = $_GET['code'];          // code
         //2 用code换取access_token 请求接口
@@ -646,6 +645,10 @@ class WechatController extends Controller
 
         //查询数据库中该用户是否存在
 
+
+
+
+
         $unionid = $user_arr['unionid'];
         $where = [
             'union_id'=>$unionid
@@ -653,7 +656,7 @@ class WechatController extends Controller
         $wx_user_info = WechatUser::where($where)->first();
         if($wx_user_info){
 
-            $user_info = UserModel::where(['id'=>$wx_user_info->id])->first();
+            $user_info = UserModel::where(['wechat_id'=>$wx_user_info->id])->first();
 
         }
         if(empty($wx_user_info) || empty($user_info)){
@@ -670,7 +673,7 @@ class WechatController extends Controller
 
             ];
             $wechat_id = WechatUser::insertGetId($data);
-            $rs = UserModel::insertGetId(['id'=>$wechat_id]);
+            $rs = UserModel::insertGetId(['wechat_id'=>$wechat_id]);
             if($rs){
                 echo '注册成功';
                 exit;
