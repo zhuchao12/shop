@@ -73,6 +73,7 @@
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
+                        <a href="http://socket.com">聊天室</a>
                     @endauth
                 </div>
             @endif
