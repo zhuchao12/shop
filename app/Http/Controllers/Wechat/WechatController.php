@@ -740,4 +740,8 @@ class WechatController extends Controller
 
     }
 
+
+    public function chat(){
+        return view('chat.chat');
+    }
 }

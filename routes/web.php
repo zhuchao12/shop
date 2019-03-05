@@ -145,5 +145,8 @@ Route::get('/wechat/getcode','Wechat\WechatController@getCode');        //接收
 Route::get('/wechat/jssdk','Wechat\WechatController@jssdk');        //接收code
 
 
+Route::get('/chat','Wechat\WechatController@chat');        //接收code
+
+
 
 
