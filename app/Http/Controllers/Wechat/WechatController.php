@@ -8,7 +8,7 @@ use App\Model\WechatChatModel;
 use App\Model\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use GuzzleHttp;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 

@@ -148,5 +148,17 @@ Route::get('/wechat/jssdk','Wechat\WechatController@jssdk');        //接收code
 Route::get('/chat','Wechat\WechatController@chat');        //接收code
 
 
+Route::any('/test/ccc','Test\TestController@ccc');   //加密测试
+
+Route::any('/test/ddd','Test\TestController@ddd');   //加密测试
+
+
+Route::any('/test/hb','Test\TestController@hb');   //HB测试
+
+
+
+
+
+
 
 
